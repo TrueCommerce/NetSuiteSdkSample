@@ -15,15 +15,17 @@ var configuration = new ConfigurationBuilder()
 // Below is an example of how this client would be instantiated manually.
 var netSuiteSearchClient = new NetSuiteSearchClient(new HttpClient(), Options.Create(new NetSuiteOptions()
 {
-    Account = "<account_id>",
+    Account = "907826",
     ConsumerKey = "<consumer_key",
     ConsumerSecret = "<consumer_secret>",
-    RestletUrl = "<restlet_url>",
+    RestletUrl = "https://907826.app.netsuite.com/app/site/hosting/restlet.nl?script=1271&deploy=1",
     TokenID = "<token_id>",
     TokenSecret = "<token_secret>"
 }));
 
 // The code below is how you'll register the SDK client if using the Microsoft DI framework.
+// The connection string uses the following format (similar to a SQL Server connection string):
+// account=907826;restleturl=https://907826.app.netsuite.com/app/site/hosting/restlet.nl?script=1271&deploy=1;consumerkey=<consumer_key>;consumersecret=<consumer_secret>;tokenid=<token_id>;tokensecret=<token_secret>;
 var services = new ServiceCollection()
     .AddNetSuite(configuration.GetConnectionString("NetSuite"))
     .BuildServiceProvider();
